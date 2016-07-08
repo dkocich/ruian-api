@@ -1,7 +1,7 @@
 
-#ruian-api
+# ruian-api
 
-RÚIAN API Client for Node JS. It supports the **REST API**.
+RÚIAN API Client for Node JS. It supports the REST geocoding API.
 
 Methods available are:
 - Geocode (get coordinate of address place) - address id / fulltext / parametric search
@@ -11,21 +11,13 @@ Methods available are:
 - ValidateAddressId (validate address id)
 - NearByAddresses (search for the nearest places)
 
-#Depencendy
+# Installation
 
 ```
-npm install request
+npm install ruian-api --save
 ```
 
-#Installing
-
-```
-npm install ruian-api
-```
-
-##Usage:
-
-
+## Usage:
 
 `var ruianapi = require('ruian-api');`
 
@@ -33,13 +25,12 @@ Create a `ruianapi` instance that can be used to make requests to RÚIAN's APIs.
 
 
 ```javascript
-
- // 'some address id'
+ // 'any address id'
 var AddressPlaceId = '26188511';
 
 // Fill address values to variables.
 // parametric search
-// 'some address parts'
+// 'any address parts'
 var Street,
     HouseNumber,
     RecordNumber,
@@ -51,31 +42,37 @@ var Street,
     DistrictNumber = '';
 
 // fulltext search
-// 'some address'
+// 'any address'
 var SearchText = 'Habrová 128 25066 Zdiby';
 
 var currentAddress = ruianapi.methodX(params);
-
 ```
 
 Call methods as async to receive response. As methodX you can choose one of following:
 
-```
-
+```javascript
 Geocode(AddressPlaceId) { ... }
+
 Geocode(SearchText) { ... }
+
 Geocode(Street, HouseNumber, RecordNumber, OrientationNumber, OrientationNumberCharacter,
   ZIPCode, Locality, LocalityPart, DistrictNumber) { ... }  // you can fill only some params
+
 CompileAddress(AddressPlaceId) { ... }
+
 CompileAddress(SearchText) { ... }
+
 CompileAddress(Street, HouseNumber, RecordNumber, OrientationNumber, OrientationNumberCharacter,
   ZIPCode, Locality, LocalityPart, DistrictNumber) { ... }  // you can fill only some params
+
 FullTextSearch(SearchText) { ... }
+
 Validate (Street, HouseNumber, RecordNumber, OrientationNumber, OrientationNumberCharacter,
   ZIPCode, Locality, LocalityPart, DistrictNumber) { ... } // you can fill only some params
-ValidateAddressId (AddressPlaceId) { ... }
-NearByAddresses (JTSKY, JTSKX, Distance) // JTSK is Czech coordinate system (https://epsg.io/5514)
 
+ValidateAddressId (AddressPlaceId) { ... }
+
+NearByAddresses (JTSKY, JTSKX, Distance) // JTSK is Czech coordinate system (https://epsg.io/5514)
 ```
 
 -------
@@ -106,6 +103,6 @@ THE SOFTWARE.
 
 ## Changelog
 
-###0.0.1
+### 0.0.1
 
   * first commit and testing version release
